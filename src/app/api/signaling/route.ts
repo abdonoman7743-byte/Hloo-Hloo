@@ -187,7 +187,7 @@ export async function POST(req: Request) {
           events: [...(sig.events ?? [])],
         };
 
-        let nextStatus = existingCall.status;
+        let nextStatus: "ringing" | "answered" | "ended" | "missed" = existingCall.status;
         let endAt = existingCall.endAt;
 
         if (eventType === "call-answer" && payload.sdp) {
